@@ -34,7 +34,7 @@ const displayPerson = (person) => {
     item.style.marginBottom = '5px'
 
     const deleteBtn = createDeleteBtn(() => {
-        personArr.deletePerson(person.id)
+        personArr.deletePerson(person)
         updateStatistics()
     });
 

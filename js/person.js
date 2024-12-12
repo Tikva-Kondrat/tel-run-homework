@@ -38,7 +38,7 @@ class PersonArray extends Array {
         .sort((a, b) => a.getAge() - b.getAge())[this.length - 1]
         .getAge()
 
-    deletePerson = (id) => {
+    deletePerson = ({id: id}) => {
         const index = this.findIndex(person => id === person.id)
         if (index >= 0)
             this.splice(index, 1)
@@ -56,7 +56,8 @@ const checkId = (id) => {
 const checkName = (name) => {
     if (!name.trim()) throw Error('Name and last name must not be empty')
     if (name.length < 2) throw Error('Name and last name must be at least 2 characters long')
-    if (!/^[A-Za-z]+$/.test(name)) throw Error('Name and last name must contain only numbers or letters')
+    if (!/^[A-Z]+(-)?( )?[A-Z]+$/i.test(name))
+        throw Error('Name and last name must contain letters and hyphen/space for double names')
 }
 
 const checkBirthDate = (dateStr) => {
